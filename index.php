@@ -21,7 +21,7 @@ $resultado = mysqli_query($conexao, $sql);
     <div class="container">
         <h1 class="hero-title">Encontre seu novo melhor amigo</h1> 
         <p class="hero-subtitle">Conectamos corações apaixonados por animais com pets que precisam de um lar cheio de amor.</p> 
-        <a href="<?php echo $base_url; ?>/animais.php" class="btn btn-primary btn-hero">Ver Animais Disponíveis</a> 
+        <a href="<?php echo $base_url; ?>/public/animais.php" class="btn btn-primary btn-hero">Ver Animais Disponíveis</a> 
     </div>
 </section>
 
@@ -46,7 +46,7 @@ $resultado = mysqli_query($conexao, $sql);
                         <p class="card-desc">
                             <?php echo htmlspecialchars(substr($animal['descricao'], 0, 100)); ?>...
                         </p>
-                        <a href="<?php echo $base_url; ?>/user/solicitar.php?id=<?php echo $animal['id']; ?>" class="btn btn-primary">Ver Detalhes</a>
+                        <a href="<?php echo $base_url; ?>/public/solicitar.php?id=<?php echo $animal['id']; ?>" class="btn btn-primary">Ver Detalhes</a>
                     </div>
                 </div>
             
@@ -61,7 +61,7 @@ $resultado = mysqli_query($conexao, $sql);
             ?>
             
         </div> <div class="section-cta">
-            <a href="<?php echo $base_url; ?>/animais.php" class="btn btn-secondary">Ver Todos os Animais</a>
+            <a href="<?php echo $base_url; ?>/public/animais.php" class="btn btn-secondary">Ver Todos os Animais</a>
         </div>
     </div>
 </section>

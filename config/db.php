@@ -5,6 +5,12 @@
  * e estabelece a conexão com o MySQL usando mysqli.
  */
 
+// Carrega configurações globais (define $base_url)
+require_once __DIR__ . '/config.php';
+
+// Carrega funções utilitárias consolidadas
+require_once __DIR__ . '/../includes/functions.php';
+
 // 1. Definição das Constantes de Conexão
 // Altere os valores conforme a configuração do seu VERTRIGO/MySQL
 
@@ -51,5 +57,9 @@ if (!$conexao) {
  * Descomente a linha abaixo se necessário.
  */
 // mysqli_set_charset($conexao, 'utf8');
+// Definir charset para evitar problemas de acentuação e discrepâncias na comunicação com o MySQL
+if ($conexao) {
+    mysqli_set_charset($conexao, 'utf8mb4');
+}
 
 ?>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="arthu">
+    <Application name="KNIME" version="5.5.1"/>
+  </Header>
+  <DataDictionary numberOfFields="4">
+    <DataField name="selling_price" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="year" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="km_driven" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="ex_showroom_price" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+  </DataDictionary>
+  <ClusteringModel modelName="k-means" functionName="clustering" modelClass="centerBased" numberOfClusters="2">
+    <MiningSchema>
+      <MiningField name="selling_price" invalidValueTreatment="asIs"/>
+      <MiningField name="year" invalidValueTreatment="asIs"/>
+      <MiningField name="km_driven" invalidValueTreatment="asIs"/>
+      <MiningField name="ex_showroom_price" invalidValueTreatment="asIs"/>
+    </MiningSchema>
+    <ComparisonMeasure kind="distance">
+      <squaredEuclidean/>
+    </ComparisonMeasure>
+    <ClusteringField field="selling_price" compareFunction="absDiff"/>
+    <ClusteringField field="year" compareFunction="absDiff"/>
+    <ClusteringField field="km_driven" compareFunction="absDiff"/>
+    <ClusteringField field="ex_showroom_price" compareFunction="absDiff"/>
+    <Cluster name="cluster_0">
+      <Array n="4" type="real">0.08872362353756845 0.8909938590903757 0.026702064645120645 0.04190964746984205 </Array>
+    </Cluster>
+    <Cluster name="cluster_1">
+      <Array n="4" type="real">0.037688860320736386 0.6726794852012785 0.05479781237033126 0.035092966390787926 </Array>
+    </Cluster>
+  </ClusteringModel>
+</PMML>

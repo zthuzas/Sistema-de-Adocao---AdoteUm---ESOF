@@ -1,21 +1,21 @@
 /*
- * Arquivo: assets/css/style.css (REVISÃO COMPLETA)
+ * Arquivo: assets/css/style.css (REVISÃO COMPLETA E OTIMIZADA)
  * Descrição: Estilo principal do AdoteUm, baseado no Mockup UX.
  */
 
 /* 1. VARIÁVEIS GLOBAIS E RESET
-   ------------------------------------------------- */
+ * ------------------------------------------------- */
 :root {
-    --cor-primaria: #007bff;   /* Azul do mockup [cite: 16] */
-    --cor-secundaria: #6c757d; /* Cinza para textos e botões secundários */
-    --cor-fundo: #ffffff;      
-    --cor-fundo-secao: #f8f9fa; /* Cinza claro para seções */
-    --cor-texto: #343a40;      /* Texto principal escuro */
-    --cor-texto-claro: #6c757d;
+    --cor-primaria: #007bff;        /* Azul do mockup */
+    --cor-secundaria: #4c6e8d;      /* Cinza para textos e botões secundários */
+    --cor-fundo: #ffffff;           /* Fundo principal */
+    --cor-fundo-secao: #f8f9fa;     /* Cinza claro para seções */
+    --cor-texto: #373b3e;           /* Texto principal escuro */
+    --cor-texto-claro: #6c757d;     /* Texto secundário/navbar */
     --cor-branco: #ffffff;
     
     --sombra-leve: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --borda-arredondada: 12px; /* Mais arredondado, como no mockup */
+    --borda-arredondada: 12px;      /* Mais arredondado, como no mockup */
     --font-principal: 'Poppins', sans-serif;
 }
 
@@ -39,7 +39,7 @@ body {
 }
 
 /* 2. CABEÇALHO (NAVBAR)
-   ------------------------------------------------- */
+ * ------------------------------------------------- */
 .navbar {
     background-color: var(--cor-fundo);
     padding: 20px 0;
@@ -84,68 +84,133 @@ body {
     color: var(--cor-primaria);
 }
 
-/* 3. BOTÕES
-   ------------------------------------------------- */
-.btn {
-    display: inline-block;
+/* 3. BOTÕES GLOBAIS (CONSOLIDADOS)
+ * ------------------------------------------------- */
+
+/* Garante que elementos nativos e <a> sigam o mesmo estilo base */
+button,
+input[type="submit"],
+input[type="button"],
+.btn,
+a.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
+    border-radius: 8px; /* Mantido o 8px para consistência do bloco .btn original */
+    text-decoration: none !important; 
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
 
-.btn-primary {
+/* Estilo primário - Azul */
+.btn,
+.btn-primary,
+button,
+input[type="submit"],
+input[type="button"] {
     background-color: var(--cor-primaria);
     color: var(--cor-branco);
     border: 1px solid var(--cor-primaria);
 }
-.btn-primary:hover {
+
+.btn-primary:hover,
+button:hover,
+input[type="submit"]:hover {
     background-color: #0069d9;
     transform: translateY(-2px);
     box-shadow: var(--sombra-leve);
 }
 
-.btn-secondary {
+/* Estilo secundário - Cinza/Claro */
+.btn-secondary,
+a.btn.secondary {
     background-color: var(--cor-fundo);
     color: var(--cor-texto-claro);
     border: 1px solid #ccc;
 }
-.btn-secondary:hover {
+.btn-secondary:hover,
+a.btn.secondary:hover {
     background-color: var(--cor-fundo-secao);
     color: var(--cor-texto);
     border-color: #bbb;
 }
 
-/* 4. SEÇÃO HERO (HOME)
-   ------------------------------------------------- */
+/* 4. SEÇÃO HERO (HOME) - CORRIGIDA E CONSOLIDADA
+ * ------------------------------------------------- */
 .hero {
-    background-color: var(--cor-fundo);
+    position: relative;
+    background-image: url('../../includes/banner-cachorro1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     text-align: center;
-    padding: 80px 0;
+    min-height: 600px;
+    color: var(--cor-branco);
 }
+
+/* overlay to improve text contrast over banner image */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(99, 98, 107, 0.381);
+    z-index: 1;
+}
+
+/* Posiciona o conteúdo do container de forma absoluta no Hero */
+.hero > .container {
+    position: absolute; 
+    top: 0;
+    left: 50%; /* Define o início da posição horizontal no meio */
+    transform: translateX(-50%); /* Move o elemento de volta pela metade de sua largura para centralizar */
+    width: 100%; /* Continua ocupando 100% da largura, mas está centralizado */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Empurra o botão para a base */
+    align-items: center; /* Garante que os itens dentro do flex container (título, subtítulo, botão) estejam centralizados horizontalmente */
+    z-index: 2;
+    padding-bottom: 70px; /* Mantém o botão na altura desejada */
+}
+
 .hero-title {
     font-size: 48px;
     font-weight: 700;
-    color: var(--cor-texto);
+    color: var(--cor-branco); /* Título em branco em destaque */
     margin-bottom: 15px;
     line-height: 1.2;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.25);
 }
 .hero-subtitle {
     font-size: 18px;
-    color: var(--cor-texto-claro);
-    max-width: 600px;
-    margin: 0 auto 30px auto;
+    color: rgba(255,255,255,0.92); /* Subtítulo em branco destacado */
+    max-width: 760px;
+    margin: 0 auto 275px auto;
 }
+
 .btn-hero {
-    padding: 15px 30px;
+    padding: 14px 90px;
     font-size: 18px;
+    border-radius: 10px;
+    border: 2px solid var(--cor-primaria);
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+}
+
+/* hover mantém interação — escurece levemente e levanta */
+.btn-hero:hover {
+    background-color: #0069d9;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.16);
 }
 
 /* 5. SEÇÃO DESTAQUE ANIMAIS (HOME)
-   ------------------------------------------------- */
+ * ------------------------------------------------- */
 .animais-destaque {
     padding: 60px 0;
     background-color: var(--cor-fundo-secao);
@@ -170,8 +235,8 @@ body {
     margin-top: 40px;
 }
 
-/* 6. GRID E CARDS DE ANIMAIS (MOCKUP [cite: 13-16])
-   ------------------------------------------------- */
+/* 6. GRID E CARDS DE ANIMAIS (MOCKUP)
+ * ------------------------------------------------- */
 .grid-animais {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -194,7 +259,7 @@ body {
 
 .card-img {
     width: 100%;
-    height: 250px;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -223,11 +288,11 @@ body {
 }
 /* O botão fica no final do card */
 .card-content .btn-primary {
-    width: 100%; /* Botão ocupa 100% [cite: 16] */
+    width: 100%; /* Botão ocupa 100% */
 }
 
-/* 7. RODAPÉ (MOCKUP [cite: 26-31])
-   ------------------------------------------------- */
+/* 7. RODAPÉ (COMPLETO)
+ * ------------------------------------------------- */
 .footer {
     background-color: #212529; /* Cor escura do mockup */
     color: #adb5bd;
@@ -268,4 +333,219 @@ body {
     border-top: 1px solid #343a40;
     padding-top: 30px;
     font-size: 14px;
+}
+
+/* 8. LAYOUT DE PÁGINA GERAL */
+.page-content {
+    padding: 60px 0;
+    min-height: 60vh; /* Garante que a página tenha altura */
+}
+
+/* Centraliza o grid-animais quando é a página principal */
+.page-content .grid-animais {
+    margin-top: 40px;
+}
+
+/* 9. ESTILOS DE FORMULÁRIO (Login/Cadastro)
+ * ------------------------------------------------- */
+.form-container {
+    max-width: 500px;
+    margin: 40px auto; /* Centraliza o formulário */
+    padding: 30px;
+    background-color: var(--cor-fundo);
+    border-radius: var(--borda-arredondada);
+    box-shadow: var(--sombra-leve);
+}
+
+.form-title {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.form-subtitle {
+    font-size: 16px;
+    color: var(--cor-texto-claro);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* FORM TABS */
+.form-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+}
+
+.form-tab-btn {
+    flex: 1;
+    padding: 15px;
+    background: none;
+    border: none;
+    color: var(--cor-texto-claro);
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+    position: relative;
+    top: 2px;
+}
+
+.form-tab-btn:hover {
+    color: var(--cor-primaria);
+}
+
+.form-tab-btn.active {
+    color: var(--cor-primaria);
+    border-bottom-color: var(--cor-primaria);
+}
+
+.form-tab-content {
+    display: none;
+    animation: fadeIn 0.3s;
+}
+
+.form-tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--cor-texto);
+}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="url"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: var(--font-principal);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="url"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.btn-full {
+    width: 100%;
+    padding: 14px;
+}
+
+.form-switch-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 10. MENSAGENS (Erro, Sucesso)
+ * ------------------------------------------------- */
+.msg {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    animation: slideDown 0.3s;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.msg-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.msg-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+/* 11. FOOTER SIMPLES
+ * ------------------------------------------------- */
+.footer-simple {
+    background-color: #212529;
+    color: #adb5bd;
+    padding: 40px 0;
+    margin-top: 60px;
+}
+
+.footer-simple-logo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.footer-simple-logo a {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--cor-branco);
+    text-decoration: none;
+}
+
+.footer-simple-nav {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.footer-simple-nav a {
+    color: #adb5bd;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.2s;
+}
+
+.footer-simple-nav a:hover {
+    color: var(--cor-branco);
+}
+
+.footer-simple-nav span {
+    color: #495057;
+}
+
+.footer-simple-info {
+    text-align: center;
+    border-top: 1px solid #495057;
+    padding-top: 20px;
+    font-size: 14px;
+}
+
+.footer-simple-info p {
+    margin: 5px 0;
 }
