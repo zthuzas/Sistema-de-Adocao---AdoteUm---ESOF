@@ -1,6 +1,6 @@
-## AdoteUm - Sistema de Adoção de Animais 🐾
+# AdoteUm - Sistema de Adoção de Animais 🐾
 
-# 📖 Sobre o Projeto
+## 📖 Sobre o Projeto
 
 O AdoteUm é uma plataforma web desenvolvida para facilitar o processo de adoção de animais. O sistema conecta pessoas interessadas em adotar (adotantes) com a administração do abrigo, permitindo visualizar animais disponíveis, solicitar adoção e gerenciar todo o fluxo até a retirada do animal.
 
@@ -42,76 +42,4 @@ Testes Automatizados: Python + Selenium WebDriver.
 
 Ferramentas: VS Code, Git.
 
-🚀 Como Executar o Projeto
 
-Pré-requisitos
-
-Ter um servidor PHP/MySQL instalado (ex: Vertrigo, XAMPP, Laragon).
-
-Ter o Python instalado (para rodar os testes).
-
-Passo a Passo
-
-Clone o repositório para a pasta pública do seu servidor (ex: www ou htdocs):
-
-git clone [https://github.com/seu-usuario/adoteum.git](https://github.com/seu-usuario/adoteum.git)
-
-
-Banco de Dados:
-
-Acesse o phpMyAdmin (http://localhost/phpmyadmin).
-
-Crie um banco de dados chamado adoteum_db (ou o nome configurado em config/db.php).
-
-Importe o arquivo database/schema.sql (se disponível) ou execute os comandos SQL de criação das tabelas.
-
-Configuração:
-
-Verifique o arquivo config/db.php e ajuste as credenciais do banco (usuário, senha) se necessário.
-
-Acesse:
-
-Abra o navegador e vá para: http://localhost/adoteum/public/index.php
-
-🤖 Testes Automatizados
-
-O projeto conta com uma suíte de testes de ponta a ponta (E2E) usando Selenium.
-
-Estrutura dos Testes (/tests)
-
-01_home.py: Valida carregamento da página inicial.
-
-02_menu.py: Verifica links de navegação.
-
-03_cadastro_fluxo.py: Testa cadastro de usuário, login e acesso ao perfil.
-
-04_login.py: Valida login com credenciais existentes.
-
-05_adocao.py: Simula um usuário solicitando a adoção de um animal.
-
-06_cadastro_animal.py: Simula o admin cadastrando um animal com foto.
-
-07_admin_validacao_adocao.py: Admin aprova uma solicitação.
-
-08_agendar_retirada.py: Setor de Operações agenda a retirada do animal.
-
-Como Rodar
-
-Instale as dependências: pip install selenium webdriver-manager
-
-Entre na pasta de testes: cd tests
-
-Execute um teste: python 08_agendar_retirada.py
-
-🎨 Design e UX
-
-O layout foi projetado com base em princípios de Fatores Humanos:
-
-Cor Azul: Transmite confiança e segurança.
-
-Gestalt (Proximidade): Informações de animais agrupadas em cards.
-
-Feedback: Mensagens de sucesso/erro claras para o usuário.
-
-Desenvolvido por [Seu Nome]
-IFTM Campus Patrocínio - 2025
