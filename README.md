@@ -6,7 +6,7 @@ O AdoteUm é uma plataforma web desenvolvida para facilitar o processo de adoç�
 
 Este projeto foi desenvolvido como parte da disciplina de Análise e Desenvolvimento de Sistemas do IFTM Campus Patrocínio.
 
-✨ Funcionalidades Principais
+## ✨ Funcionalidades Principais
 
 👤 Área Pública e do Usuário
 
@@ -18,7 +18,7 @@ Solicitação de Adoção: Formulário para manifestar interesse em um animal es
 
 Meu Perfil: Acompanhamento do status das solicitações (Pendente, Aprovada, Rejeitada).
 
-🛡️ Área Administrativa (Dashboard)
+## 🛡️ Área Administrativa (Dashboard)
 
 Gestão de Animais: Cadastro, Edição e Exclusão de animais (CRUD completo com upload de fotos).
 
@@ -28,7 +28,7 @@ Fluxo de Aprovação: Aprovar ou Rejeitar solicitações.
 
 Agendamento: Agendar data e hora para retirada do animal após aprovação (Setor de Operações).
 
-🛠️ Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas
 
 Frontend: HTML5, CSS3 (Design Responsivo, Flexbox/Grid).
 
